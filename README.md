@@ -1,2 +1,4 @@
 # Sycamore
-Assets related to Sycamore 
+Sycamore core assets. 
+
+Lets the devs begin!
