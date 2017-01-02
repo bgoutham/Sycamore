@@ -1,0 +1,1333 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Learn on your schedule.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brevis Learning</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Brevis">
+  <meta name="theme-color" content="#303F9F">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+
+  <!-- Material Design Lite imports -->
+  <link rel="stylesheet" href="/bower_components/material-design-lite/material.css">
+  <script defer src="/bower_components/material-design-lite/material.min.js"></script>
+
+<!-- Styling -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,300">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth:700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900"  type="text/css">
+<link rel="stylesheet" href="/styles/main.css">
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- Font awesome icons --> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">  
+
+<body>
+
+  <!-- Theatre mode viewer -->
+  <div class="fp-theatre"><img class="fp-fullpic"></div>
+
+  <!-- Splash screen -->
+  <section id="page-splash">
+
+    <h3 class="fp-logo">Brevis</h3>
+    <div class="fp-caption">The fastest way to learn</div>
+    <div class="fp-signed-out-only fp-initially-hidden">
+      <button class="fp-sign-in-button mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">account_circle</i> Sign in with Google</button>
+      <a class="fp-skip" href="/feed">skip</a>
+    </div>
+    <p></p>
+    <div class="fp-sign">sign in to save progress</div>
+  </section>
+
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!-- Header section containing logo and menu -->
+    <header class="fp-header mdl-layout__header mdl-color-text--white  mdl-color--blue-100">
+    </header>
+
+    <main class="mdl-layout__content mdl-color--grey-100">
+
+      <!-- Show a feed of posts -->
+      <section id="page-feed" class="mdl-grid fp-content" style="display: flex;">
+        <div id="progressbar">
+          <div></div>
+        </div>
+        <div class="fp-image-container mdl-cell mdl-cell--12-col mdl-grid">
+        </div>  
+      </section>
+
+      <!-- The catalog of courses offered --> 
+      <section id="page-coursefeed" class="mdl-grid fp-content" style="display: flex;">
+        <div class="fp-image-container mdl-cell mdl-cell--12-col mdl-grid">
+        </div>  
+      </section>
+
+
+      <!-- Generic welcome page --> 
+      <section id="page-genericwelcome" class="mdl-grid fp-content" style="display: flex;">
+        <div class="fp-image-container container">
+        </div> 
+      </section>
+
+
+      <!-- Layout of the progressfeed --> 
+      <section id="page-progressfeed" class="fp-content" style="display: none;">
+       <div class="fp-analytics-container container">
+
+
+       </div> 
+<!--
+  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text" style="align-items: center; margin: auto;">Module progress</h1>
+    </div>
+    <div class="semicirclecontainer" id="moduleprogresssemicircle"></div>
+    <div class="mdl-card__supporting-text">
+      <p>Good progress keep going!</p>
+    </div>
+  </div>  
+  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text" style="align-items: center; margin: auto;">Module accuracy</h1>
+    </div>
+    <div class="semicirclecontainer" id="moduleaccuracysemicircle"></div>
+    <div class="mdl-card__supporting-text">
+      <p>You have done well, some blurb explaining the chart here.</p>
+    </div>
+  </div>
+  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text" style="align-items: center; margin: auto;">Total module experience</h1>
+    </div>
+    <div class="semicirclecontainer" id="responsetimesemicircle"></div>  
+    <div class="mdl-card__supporting-text">
+      <p>Nice speed, keep going!</p>
+    </div>
+  </div>  
+  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text" style="align-items: center; margin: auto;">Average time per question</h1>
+    </div>        
+    <div id="chart-container">BarCharts will render here</div>
+    <div class="mdl-card__supporting-text">
+      <p>Nice speed, keep going!</p>
+    </div>
+  </div>  
+-->
+
+</section>
+
+
+<!-- Show a single post with comments -->
+<section id="page-post" class="fp-content" style="display: none;">
+  <div class="fp-image-container">
+
+    <div class="fp-post">
+     <div class="col s12 m12 center-align">
+      <div class="card z-depth-6 center-align">
+        <div class="fp-image"></div>
+        <div class="fp-question card-content"></div>
+        <div class="card-action"> 
+         <span style="display: inline-block;">
+          <a id="1" class="fp-answer-choice-one waves-effect waves-light btn-large hoverable" style="display: block;"></a> 
+          <br>
+          <a id="2" class="fp-answer-choice-two waves-effect waves-light btn-large hoverable" style="display:block;"></a> 
+        </span>
+        <br>
+        <p id="flowtext" class="flow-text"></p> 
+      </div>
+      <div id="demoProgress" class="mdl-progress mdl-js-progress"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fp-content-post">
+  <div class="card-demo-two z-depth-2 center-align">
+    <div class="fp-image"></div> 
+    
+    <div class="card-content-abc">
+      <div class="fp-content-point-one"></div>
+  
+    </div>
+    <div class="card-action center-align"> 
+      <a class="fp-real-next-button  btn-large">Next</a>
+    </div>
+    <p id="flowtext" class="flow-text-2 center-align"></p> 
+  </div>
+</div>
+
+<div class="fp-demo-one-post">
+  <div class="card-demo-one z-depth-2 center-align">
+    <div id="demoOneProgress" class="mdl-progress mdl-js-progress"></div>
+    <!-- Question section -->
+    <div class="card-question" style="background-color:#C27BA0">
+      <div class="fp-question card-content"></div>
+      <div class="fp-question-punch card-content"></div>
+    </div>
+
+    <div class="card-tiny">
+      <p id="flowtext" class="flow-text center-align"></p> 
+    </div>
+
+    <div class="card horizontal">
+      <div class="card-answer-one card-stacked z-depth-2" style="background-color:#69D2E7">
+        <a id="1" class="fp-answer-choice-one btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+      <div class="card-answer-two card-stacked z-depth-2" style="background-color:#FA6900">
+        <a id="2" class="fp-answer-choice-two btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+    </div>
+  </div>   
+</div>
+
+
+
+<div class="fp-demo-two-post">
+  <div class="card-demo-one z-depth-2 center-align">
+   <div id="demoOneProgress" class="mdl-progress mdl-js-progress"></div>
+    <!-- Question section -->
+    <div class="card-question-2" style="background-color:#E2FBF8">
+      <div class="fp-question card-content"></div>
+      <div class="fp-question-punch card-content"></div>
+    </div>
+
+    <div class="card horizontal" style="background-color:#FFFFFF">
+      <div class="card-answer-one card-stacked" style="background-color:#FFFFFF">
+        <a id="1" class="fp-answer-choice-one btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+      <div class="card-answer-two card-stacked" style="background-color:#FFFFFF">
+        <a id="2" class="fp-answer-choice-two btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+    </div>
+    <div class="card horizontal-2 valign valign-wrapper">
+      <p id="flowtext" class="flow-text center-align"></p> 
+    </div>
+    
+  </div>   
+</div>
+
+
+<div class="fp-first-page-with-login">
+  <div class="card-demo-one z-depth-2 center-align">
+    <div class="fp-image"></div> 
+    <br>       
+    <div class="card-content-abc">
+      <div class="fp-content-point-one"></div>
+      <br>
+    </div>
+
+    <form id="userLoginForm" action="#">
+      <div class="card-action center-align"> 
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="loginEmailIdInput">
+          <label class="mdl-textfield__label" for="loginEmailIdInput">Email ID</label>
+        </div>
+        <br>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="lastNameInput">
+          <label class="mdl-textfield__label" for="lastNameInput">Last Name</label>
+        </div>
+        <br>
+        <a class="fp-real-next-button waves-effect waves-light btn-large">Start</a>
+
+    <!-- 
+      <button type="submit" class="fp-real-next-button waves-effect waves-light btn-large">
+        StartNEW!
+      </button>
+    -->
+  </div>
+</form>
+<p id="flowtext" class="flow-text-2 center-align"></p> 
+</div>
+</div>
+
+
+<div class="fp-cke-page-with-signoff">
+  <div class="card-demo-one z-depth-2 center-align">
+    <div class="fp-image"></div> 
+    <br>       
+    <div class="card-content-abc">
+      <div class="fp-content-point-one"></div>
+      <br>
+    </div>
+    <div class="card-action center-align"> 
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="emailAddress">
+        <label class="mdl-textfield__label" for="emailAddressInput">Completed By</label>
+      </div>
+    <br>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="lastName">
+        <label class="mdl-textfield__label" for="lastNameInput">Date</label>
+      </div>
+    <br>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="restaurantNumber">
+        <label class="mdl-textfield__label" for="restaurantNumber">Restaurant #</label>
+      </div>
+      <br>
+
+      <a class="fp-real-next-button waves-effect waves-light btn-large">Submit</a>
+    </div>
+    <p id="flowtext" class="flow-text-2 center-align"></p> 
+  </div>
+</div>
+
+
+
+<div class="fp-multiple-answer">
+
+  <div class="card-demo-carl z-depth-2 center-align">
+    
+  <!--
+    <div class="fp-image"></div> 
+    <br>    
+    -->   
+
+
+    <form action="#">
+
+
+      <div class="card-content-lyft">
+        <p> Product Quality </p> 
+
+        <!--   <div class="fp-content-point-one"> Product Quality</div> -->
+
+      </div>
+
+
+<!--
+      <p>
+        <div class="switch">
+          <input type="checkbox" class="filled-in" id="filled-in-box" checked="unchecked" />
+          <label for="filled-in-box">Pork chop fritters are removed from the freezer and placed in a clean, sanitized, 1/3 size pan and covered with a solid lid. Pan is placed in the freezer closest to the fry station. </label>
+        </div>
+      </p>
+
+      <p>
+        <div class="switch">
+          <input type="checkbox" class="filled-in" id="filled-in-box-2"/>
+          <label for="filled-in-box-2">Clean, sanitized, designated yellow tongs are placed in a clean, sanitized, 1/6 size stainless steel pan in the reach in freezer. </label>
+        </div>
+      </p>
+
+
+      <p>
+        <div class="switch">
+          <input type="checkbox" class="filled-in" id="filled-in-box-3"/>
+          <label for="filled-in-box-3">Clean, sanitized, yellow tongs are used to place pork chop fritters into a slanted cooking rack at the staging area.<b><i>They are not being staged over the fryer. </i></b> </label>
+        </div>
+      </p>
+      -->
+
+
+
+
+         <p> 
+           <div class="switch">
+
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+
+
+             <label>￼
+Pork chop fritters are removed from the freezer and placed in a clean, sanitized, 1/3 size pan and covered with a solid lid. Pan is placed in the freezer closest to the fry station. 
+             </label>
+            </div> 
+         </p>
+
+
+
+
+         <p> 
+           <div class="switch">
+
+
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+
+           
+             <label>￼
+Pork chop fritters are removed from the freezer and placed in a clean, sanitized, 1/3 size pan and covered with a solid lid. Pan is placed in the freezer closest to the fry station. 
+             </label>
+            </div> 
+         </p>
+
+
+         <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Clean, sanitized, designated yellow tongs are placed in a clean, sanitized, 1/6 size stainless steel pan in the reach in freezer. 
+             </label>
+            </div> 
+         </p>
+
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Clean, sanitized, yellow tongs are used to place pork chop fritters into a slanted cooking rack at the staging area. They are not being staged over the fryer. 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Pork chop fritters are immediately placed into the fryer. Pork chop fritters are cooked for 4:00 minutes using the temporary pork chop fryer timer label. ￼￼￼
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+When the timer sounds, pork chop fritters are drained for 10 seconds.
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Clean, sanitized, green tongs, are used to place the cooked pork chop fritters on a clean, sanitized, plastic transfer tray and taken to the overshelf or placed under heat lamps. Hold time is 30 minutes using an approved timing system. ￼
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+A 1/2 oz. ladle is used to portion one ladle of sausage gravy on each crown and heel of the Made From Scratch Biscuit. ￼
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Dedicated tongs are used to obtain one pork chop fritter from the overshelf, or directly from the fry station, and place pork chop fritter on the biscuit crown. ￼￼
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+The crown is placed onto the heel to complete the biscuit sandwich. ￼￼￼￼￼￼￼￼￼￼￼￼￼￼The Pork Chop ‘N’ Gravy Biscuits are properly wrapped and packaged. 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+All Backline Crew Members have prepared and tasted the Pork Chop ‘N’ Gravy Biscuits. 
+             </label>
+            </div> 
+         </p>
+
+
+
+      <div class="card-content-lyft">
+        <p> Service and Friendliness </p> 
+
+        <!--   <div class="fp-content-point-one"> Product Quality</div> -->
+
+      </div>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Cashiers are knowledgeable of the product and are able to explain the product to Guests. 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Cashiers are using proper scripting and SMART selling skills. (Cashier Cards are posted at the register.) 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Cashiers know how to key in the Pork Chop ‘N’ Gravy Biscuit and Combos. 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Service times are within standards (including drive-thru). 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+All Frontline Crew Members have tasted the Pork Chop ‘N’ Gravy Biscuit. ￼￼
+             </label>
+            </div> 
+         </p>
+
+
+
+
+
+      <div class="card-content-lyft">
+        <p> Training Materials </p> 
+
+        <!--   <div class="fp-content-point-one"> Product Quality</div> -->
+
+      </div>
+
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Job Aids are posted at the cook line. ￼￼
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Temporary Pork Chop Fritter fryer timer label is placed onto fryer buttons. 
+             </label>
+            </div> 
+         </p>
+
+
+
+      <div class="card-content-lyft">
+        <p> ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼Person in Charge </p> 
+
+        <!--   <div class="fp-content-point-one"> Product Quality</div> -->
+
+      </div>
+
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Person in Charge knows product sales projections (ADQs). 
+             </label>
+            </div> 
+         </p>
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Person in Charge is Modeling - Coaching - Requiring, Praising good performance / correcting issues. ￼
+             </label>
+            </div> 
+         </p>
+
+
+
+
+      <div class="card-content-lyft">
+        <p> POP Posting </p> 
+
+        <!--   <div class="fp-content-point-one"> Product Quality</div> -->
+
+      </div>
+
+
+
+                  <p> 
+           <div class="switch">
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1" style="color:#008000">Yes</label>
+
+            <input name="group2" type="radio" id="test2" />
+      <label for="test2"  style="color:#b20000">No</label>
+             <label>￼
+Pork Chop ‘N’ Gravy Biscuit POP has been posted correctly with correct pricing.
+             </label>
+            </div> 
+         </p>
+
+
+
+    <div class="card-action center-align"> 
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="emailAddress">
+        <label class="mdl-textfield__label" for="emailAddressInput">Completed By</label>
+      </div>
+    <br>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="lastName">
+        <label class="mdl-textfield__label" for="lastNameInput">Date</label>
+      </div>
+    <br>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="restaurantNumber">
+        <label class="mdl-textfield__label" for="restaurantNumber">Restaurant #</label>
+      </div>
+      <br>
+
+      <a class="fp-real-next-button waves-effect waves-light btn-large">Submit</a>
+    </div>
+
+         </form> 
+        
+
+    
+    <div class="card-action center-align"> 
+      <a class="btn-flat">Submit</a>
+    </div>
+  
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  <div class="card-demo-one z-depth-2 center-align">
+
+    <div class="card-question-2" style="background-color:#E2FBF8">
+      <div class="fp-question card-content"></div>
+      <div class="fp-question-punch card-content"></div>
+    </div>
+
+    <div class="card horizontal" style="background-color:#FFFFFF">
+      <div class="card-answer-one card-stacked" style="background-color:#FFFFFF">
+        <a id="1" class="fp-answer-choice-one btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+      <div class="card-answer-two card-stacked" style="background-color:#FFFFFF">
+        <a id="2" class="fp-answer-choice-two btn-large-horizontal hoverable" style="color:#000000"></a>
+      </div>
+    </div>
+    <div class="card horizontal-2 valign valign-wrapper">
+      <p id="flowtext" class="flow-text center-align"></p> 
+    </div>
+  </div>   
+  -->
+
+
+</div>
+
+
+
+
+
+
+<div class="fp-demo-image">
+  <div class="card-demo-one z-depth-2 center-align">
+    <div class="fp-image"></div>  
+  </div>   
+</div>
+
+
+<!-- 
+<div class="fp-video-post">
+
+
+
+
+
+
+
+  <div class="card-demo-one z-depth-2 center-align">
+    <div id="mobile-analytics" class="mobile-analytics fp-image-mobile">
+      <img src="https://firebasestorage.googleapis.com/v0/b/lyftpilot-1385.appspot.com/o/images%2Fclientdemo%2FMobile%20Portrait1.png?alt=media&token=4d3cef59-a84b-426e-a2a0-57d4ac7daca0" alt="" />
+    </div>  
+    <div id="desktop-analytics" class="desktop-analytics fp-image-desktop">
+      <img src="https://firebasestorage.googleapis.com/v0/b/lyftpilot-1385.appspot.com/o/images%2Fclientdemo%2FDesktopAnalytics.png?alt=media&token=42808400-3048-4f3d-b33a-403af3fc629c" alt="" />
+    </div>   
+  </div>
+  --> 
+
+
+
+<div class="fp-video-post">
+
+  <div class="card-demo-one z-depth-2 center-align">
+    <div class="fp-image"></div> 
+    <br>       
+
+<!--
+ <form action="#">
+ -->
+
+    <div class="card-content-lyft">
+   <!-- <p> Product Quality </p> -->
+    
+      <div class="fp-content-point-one"> Product Quality</div>
+    
+    </div>
+
+<!--
+    <p>
+      <div class="switch">
+      <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+      <label for="filled-in-box">Pork chop fritters are removed from the freezer and placed in a clean, sanitized, 1/3 size pan and covered with a solid lid. Pan is placed in the freezer closest to the fry station. </label>
+      </div>
+    </p>
+
+        <p>
+    <div class="switch">
+      <input type="checkbox" class="filled-in" id="filled-in-box2" />
+      <label for="filled-in-box">Clean, sanitized, designated yellow tongs are placed in a clean, sanitized, 1/6 size stainless steel pan in the reach in freezer. </label>
+      </div>
+
+        </p>
+
+ 
+
+
+              <p> 
+               <div class="switch"><label>NO<input type="checkbox"><span class="lever"></span>YES</label>
+               <label>Pork chop fritters are immediately placed into the fryer. Pork chop fritters are cooked for 4:00 minutes using the temporary pork chop fryer timer label. ￼￼￼￼</label></div> 
+               </p>
+        
+              <p> 
+               <div class="switch"><label>NO<input type="checkbox" checked><span class="lever"></span>YES</label>
+               <label>When the timer sounds, pork chop fritters are drained for 10 seconds.￼￼￼</label></div> 
+               </p>
+
+
+
+  </form>-->
+        
+
+    
+    <div class="card-action center-align"> 
+      <a class="fp-real-next-button  btn-large">Continue</a>
+    </div>
+    <p id="flowtext" class="flow-text-2 center-align"></p> 
+
+
+  </div>
+
+  </div>
+
+
+<!--
+
+<div class="fp-video-post">
+  <div class="col s12 m12 center-align">
+    <div class="card z-depth-6 center-align">
+      <div class="fp-video">
+        <video controls>
+          <source src="http://suvidha-videos.s3.amazonaws.com/Prime_Training/Level1/Hindi/CarQuality_Hindi.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="card-content">
+          <div class="fp-content-point-one"></div>
+        </div>
+        <div class="card-action"> 
+          <a class="fp-real-next-button waves-effect waves-light btn-flat">Continue</a>
+        </div>
+        <p id="flowtext" class="flow-text-2"></p> 
+        <div id="demoProgressContent" class="mdl-progress mdl-js-progress"></div>
+      </div>    
+    </div>
+  </div>
+-->
+
+
+
+<!--
+<div class="fp-demo-one-post">
+  <div class="col s12 m12 center-align">
+    <div class="card z-depth-6 center-align hoverable">
+      <div class="col s12 m6">
+        <div class="card-question" style="background-color:#E0B5B5">
+          <div class="fp-question card-content"></div>
+          <div class="fp-question-punch card-content"></div>
+        </div>
+      </div>
+
+      <div class="card-action"> 
+        <div class="col s12 m7">
+          <div class="card horizontal">
+            <div class="card-answer-one card-stacked z-depth-2 left-align valign valign-wrapper" style="background-color:#A0CED8">
+              <a id="1" class="fp-answer-choice-one waves-effect waves-light btn-large-horizontal hoverable" style="color:#000000"></a>  
+            </div>
+            <div class="card-answer-two card-stacked z-depth-2 center-align valign-wrapper" style="background-color:#EFEFBA">
+              <a id="2" class="fp-answer-choice-two waves-effect waves-light btn-large-horizontal hoverable" style="color:#000000"></a>
+            </div>
+          </div>
+        </div>
+        <p id="flowtext" class="flow-text"></p> 
+      </div>
+      <div id="demoProgress" class="mdl-progress mdl-js-progress"></div>
+    </div>    
+  </div>
+</div>
+-->
+</section>
+
+<!-- Show a single highlight with comments -->
+<section id="page-highlight" class="mdl-grid fp-content" style="display: none;">
+  <div class="fp-image-container mdl-cell mdl-cell--12-col mdl-grid">
+    <div class="fp-post mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet
+    mdl-cell--8-col-desktop mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell
+    mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+    <div class="fp-question"></div>
+    <div class="fp-answer-choices"></div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<!-- Show available courses -->
+<section id="page-course" class="mdl-grid fp-content" style="display: none;">
+  <div class="fp-image-container">
+    <div class="fp-course">
+      <div class="mdl-card mdl-shadow--2dp">
+        <figure class="mdl-card__media">
+          <img src="https://firebasestorage.googleapis.com/v0/b/newtest-549f7.appspot.com/o/images%2Fdesk.jpg?alt=media&token=79bb0c33-2bd3-49cc-a9d1-2798a4800c09" alt="" />
+        </figure>
+        <div class="mdl-card__title">
+          <h1 class="fp-course-name mdl-card__title-text"></h1>
+        </div>
+        <div class="fp-course-description mdl-card__supporting-text">
+          <p></p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="fp-course-status mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/feed"></a>
+          <div class="mdl-layout-spacer"></div>
+          <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+          <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Show progress -->
+<section id="page-progress" class="mdl-grid fp-content" style="display: none;">
+  <div class="mdl-card mdl-shadow--2dp">
+  </div>
+  <div class="fp-progress-container">
+    <div class="mdl-card mdl-shadow--2dp">
+    </div>
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="circlecontainer" id="circlecontainer">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- About & Contact page -->
+<section id="page-about" class="mdl-grid fp-content" style="display: none;">
+  <div class="fp-help mdl-card mdl-shadow--2dp mdl-cell
+  mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+  <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+    <i class="fp-info material-icons">info</i>
+    <div>
+      <p> OnRamp Training is the fastest way to learn <a href="https://brevislearning.com">OnRamp</a>.</p>
+    </div>
+  </div>
+</div>
+<div class="fp-help mdl-card mdl-shadow--2dp mdl-cell
+mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+  <i class="fp-info material-icons">help</i>
+  <div>
+    <p>Start following people to see their posts in your <a href="/"><i class="material-icons">home</i>home</a>!</p>
+    <p>
+      Use the <strong><i class="material-icons">search</i>search bar</strong> to find people you know and have
+      a look at the <a href="/feed"><i class="material-icons">trending_up</i>feed</a> to discover interesting people.
+    </p>
+    <p>Then <i class="material-icons">favorite</i>like and comment their posts!</p>
+    <p>
+      Share lessons with your friends using the <i class="material-icons">file_upload</i>or <i class="material-icons">photo_camera</i>buttons.
+    </p>
+  </div>
+</div>
+</div>
+<div class="fp-help mdl-card mdl-shadow--2dp mdl-cell
+mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+  <i class="fp-info material-icons">contacts</i>
+  <div>
+    <p>Feel free to file issues on our <a href="https://github.com/firebase/friendlypix">GitHub repo</a>.</p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- User Profile page -->
+<section id="page-user-info" class="mdl-grid fp-content" style="display: none;">
+  <div class="fp-user-container mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+    <div class="fp-user-avatar"></div>
+    <div class="fp-name-follow-container mdl-cell mdl-cell--5-col">
+      <div class="fp-user-username"></div>
+      <div class="fp-signed-in-only">
+        <label class="fp-follow mdl-switch mdl-js-switch mdl-js-ripple-effect" for="follow">
+          <input type="checkbox" id="follow" class="mdl-switch__input" value="true">
+          <span class="mdl-switch__label">Follow</span>
+        </label>
+      </div>
+      <div class="fp-user-detail-container">
+        <div class="fp-user-detail"><span class="fp-user-nbposts">0</span> posts</div>
+        <div class="fp-user-detail"><span class="fp-user-nbfollowers">0</span> followers</div>
+        <div class="fp-user-detail fp-user-nbfollowing-container"><span class="fp-user-nbfollowing">0</span> following</div>
+      </div>
+    </div>
+  </div>
+  <div class="fp-user-following mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+    <button class="fp-close-following  mdl-button mdl-js-button mdl-button--raised mdl-button--fab">
+      <i class="material-icons">expand_less</i>
+    </button>
+  </div>
+  <div class="fp-image-container mdl-cell mdl-cell--12-col mdl-grid">
+    <div class="fp-no-posts mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-grid mdl-grid--no-spacing">
+      <div class="mdl-card mdl-shadow--2dp mdl-cell
+      mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+      No posts yet.
+    </div>
+  </div>
+</div>
+<div class="fp-next-page-button">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--fab">
+    <i class="material-icons">expand_more</i>
+  </button>
+</div>
+</section>
+
+
+
+<!-- Post new question page -->
+<section id="page-add" class="fp-content" style="display: none;">
+  <div class="fp-addcontainer mdl-card mdl-shadow--2dp mdl-cell mdl-cell--10-col ">
+    <!-- Upload question form -->  
+
+
+    <form id="uploadPicForm" action="#">
+      <p class="flow-text"> Question with pic upload form </p>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="topicAreaInput">
+        <label class="mdl-textfield__label" for="topicAreaInput">Topic Area (Toplevel name of the module) ...</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="questionInput">
+        <label class="mdl-textfield__label" for="questionInput">Question here ...</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="answerOneInput">
+        <label class="mdl-textfield__label" for="answerOneInput">Answer choice 1 ...</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="answerTwoInput">
+        <label class="mdl-textfield__label" for="answerTwoInput">Answer choice 2 ...</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="number" id="correctAnswerChoiceInput">
+        <label class="mdl-textfield__label" for="correctAnswerChoiceInput">Correct answer choice (1/2/3/4/5)...</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="imgSrc">
+        <label class="mdl-textfield__label" for="imgSrc">Image URL (Blank if none)...</label>
+      </div>
+      <input id="fp-mediacapture" type="file" accept="image/*;capture=camera">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-cell--hide-tablet mdl-color--amber-400 mdl-shadow--4dp mdl-js-ripple-effect" id="add">
+        <i class="material-icons">file_upload</i>
+      </button>
+      <button type="submit" class="fp-clear mdl-button mdl-js-button mdl-color--amber-100">
+        Clear Data
+      </button>
+
+      <button type="submit" class="fp-upload mdl-button mdl-js-button mdl-color--amber-400">
+        Upload Question!
+      </button>
+
+
+    </form>
+  </div>
+  <br>
+
+
+  <div class="fp-addcontainer mdl-card mdl-shadow--2dp mdl-cell mdl-cell--10-col ">
+    <!-- Upload content form -->             
+    <form id="uploadContentForm" action="#">
+     <p class="flow-text"> Content with pic upload form </p>
+     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contentTopicAreaInput">
+      <label class="mdl-textfield__label" for="contentTopicAreaInput">Content topic Area (Toplevel name of the module) ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contentTitle">
+      <label class="mdl-textfield__label" for="contentTitle">Content card title here ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contentOneInput">
+      <label class="mdl-textfield__label" for="contentOneInput">Content point one ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contentTwoInput">
+      <label class="mdl-textfield__label" for="contentTwoInput">Content point two ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="contentThreeInput">
+      <label class="mdl-textfield__label" for="contentThreeInput">Content point three ...</label>
+    </div>
+    <button type="submit" class="fp-upload-content mdl-button mdl-js-button mdl-color--amber-400">
+      Upload Content!
+    </button>
+  </form>
+</div>
+
+<br>
+<div class="fp-addcontainer mdl-card mdl-shadow--2dp mdl-cell mdl-cell--10-col ">
+  <form id="uploadQuestionWithoutPicForm" action="#">
+    <p class="flow-text"> Question without pic upload form </p>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="topicAreaInput2">
+      <label class="mdl-textfield__label" for="topicAreaInput2">Topic Area (Toplevel name of the module) ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="questionInput2">
+      <label class="mdl-textfield__label" for="questionInput2">Question here ...</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="questionInputPunch">
+      <label class="mdl-textfield__label" for="questionInputPunch">Question input two here ...</label>
+    </div>
+
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="answerOneInput2">
+      <label class="mdl-textfield__label" for="answerOneInput2">Answer choice 1 ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="answerTwoInput2">
+      <label class="mdl-textfield__label" for="answerTwoInput2">Answer choice 2 ...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" id="correctAnswerChoiceInput2">
+      <label class="mdl-textfield__label" for="correctAnswerChoiceInput2">Correct answer choice (1/2/3/4/5)...</label>
+    </div>
+    <button type="submit" class="fp-clear-2 mdl-button mdl-js-button mdl-color--amber-100">
+      Clear Data
+    </button>
+    <button type="submit" class="fp-upload-2 mdl-button mdl-js-button mdl-color--amber-400">
+      Upload Question (No Pic)!
+    </button>
+  </form>
+</div>
+<br>
+<div class="fp-addcontainer mdl-card mdl-shadow--2dp mdl-cell mdl-cell--10-col ">
+  <form id="uploadContentWithoutPicForm" action="#">
+   <p class="flow-text"> Content without pic upload form </p>
+   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="contentTopicAreaInput2">
+    <label class="mdl-textfield__label" for="contentTopicAreaInput2">Content topic Area (Toplevel name of the module) ...</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="contentTitle2">
+    <label class="mdl-textfield__label" for="contentTitle2">Content card title here ...</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="contentOneInput2">
+    <label class="mdl-textfield__label" for="contentOneInput2">Content point one ...</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="contentTwoInput2">
+    <label class="mdl-textfield__label" for="contentTwoInput2">Content point two ...</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="contentThreeInput2">
+    <label class="mdl-textfield__label" for="contentThreeInput2">Content point three ...</label>
+  </div>
+  <button type="submit" class="fp-upload-content-2 mdl-button mdl-js-button mdl-color--amber-400">
+    Upload Content (No Pic)!
+  </button>
+</form>
+</div>
+</section>
+
+
+<!-- Post new question page -->
+<section id="page-users" class="fp-content" style="display: none;">
+  <div class="fp-addcontainer mdl-card mdl-shadow--2dp mdl-cell mdl-cell--10-col ">
+    <!-- Upload question form -->   
+
+    <form id="uploadPicForm" action="#">
+      <br>
+      <p class="flow-text"> Employee entry form </p>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email address</label>
+        </div>
+      </div>
+      <br> 
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <label>Employee status</label>
+        <select class="browser-default">
+          <option value="" disabled selected>New/Existing</option>
+          <option value="1">New</option>
+          <option value="2">Existing</option>
+        </select>
+      </div>
+      <br>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+       <div class="input-field col s6">   
+        <input id="icon_prefix" type="text" class="validate">
+        <label for="icon_prefix">Employee Name (optional)</label>
+      </div>
+    </div>
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <div class="input-field col s6">   
+        <input id="icon_prefix" type="text" class="validate">
+        <label for="icon_prefix">Location (optional)</label>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="fp-upload mdl-button mdl-js-button mdl-color--amber-400">
+      Add Employee
+    </button>
+    <br>
+    <br>
+  </form>
+
+</div>
+<br>
+
+</section>
+</main>
+</div>
+
+<!-- Page.js -->
+<script src="/bower_components/page/page.js"></script>
+
+<!-- jQuery -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Latinize -->
+<script src="/bower_components/latinize/latinize.js"></script>
+
+<!-- SweetAlert -->
+<script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/bower_components/sweetalert/dist/sweetalert.css">
+
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBnEywcvofXtUEThX_5VjO6BDYjCUgwYNY",
+    authDomain: "lyftpilot-1385.firebaseapp.com",
+    databaseURL: "https://lyftpilot-1385.firebaseio.com",
+    storageBucket: "lyftpilot-1385.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<!-- Progress bar --> 
+<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+
+<!-- Friendly Pix ES5 scripts -->
+<script src="/lib/utils.js"></script>
+<script src="/lib/firebase.js"></script>
+<script src="/lib/auth.js"></script>
+<script src="/lib/search.js"></script>
+<script src="/lib/uploader.js"></script>
+<script src="/lib/userpage.js"></script>
+<script src="/lib/post.js"></script>
+<script src="/lib/highlightcard.js"></script>
+<script src="/lib/feed.js"></script>
+<script src="/lib/routing.js"></script>
+<script src="/lib/question.js"></script>
+<script src="/lib/highlightfeed.js"></script>
+<script src="/lib/coursefeed.js"></script>
+<script src="/lib/coursecard.js"></script>
+<script src="/lib/myprogressfeed.js"></script>
+<script src="/lib/myprogresscard.js"></script>
+<script src="/lib/generic.js"></script>
+
+
+
+<script src="material/js/ripples.min.js"></script>
+<script src="material/js/material.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83417140-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
